@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<odoo>
+	<menuitem name="Gelbe Seiten" id="top_gelbeseiten_menu"/>
+	<menuitem name="Gelbe Seiten" id="sub_gelbeseiten_menu" parent="top_gelbeseiten_menu"/>
+
+</odoo>

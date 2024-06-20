@@ -1,0 +1,178 @@
+<!-- <odoo>
+    <data>
+        <record id="view_crm_lead_form_custom_header" model="ir.ui.view">
+            <field name="name">crm.lead.form.custom.header</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <header position="inside">
+                    <button name="action_set_won_rainbowman" string="Test"
+                            type="object" class="oe_highlight" data-hotkey="w" title="Mark as won"
+                            invisible="not active or probability == 100 or type == 'lead'"/>
+
+                    <button name="action_import_excel" string="Import from Excel"
+                            type="object" class="oe_highlight" title="Import data from Excel"/>
+                </header>
+            </field>
+        </record> -->
+
+        <!-- Inherit and customize the CRM lead form view sheet -->
+        <!-- <record id="view_crm_lead_form_custom_fields" model="ir.ui.view">
+            <field name="name">crm.lead.form.custom.fields</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="inside">
+                    <group>
+                        <field name="x_stud_name"/>
+                        <field name="x_stud_vorname"/>
+                        <field name="x_stud_hausnummer"/>
+                        <field name="x_stud_geburtsdatum"/>
+                        <field name="x_stud_geburtsort"/>
+                        <field name="x_stud_geschlecht"/>
+                        <field name="x_language_level_german"/>
+                        <field name="x_language_certificate"/>
+                        <field name="x_Agent"/>
+                        <field name="x_agents"/>
+                        <field name="x_email_gmail"/>
+                        <field name="x_employer"/>
+                        <field name="x_employer_missing_documents"/>
+                        <field name="x_GDrivePath"/>
+                        <field name="x_identity"/>
+                        <field name="x_HWKIHK_Vertrag"/>
+                        <field name="x_Interview_Date"/>
+                        <field name="x_komplette_pdf"/>
+                        <field name="x_missing_ds"/>
+                        <field name="x_motivation_text"/>
+                        <field name="x_our_provision"/>
+                        <field name="x_pass_photo"/>
+                        <field name="x_rechnung_erstellt"/>
+                        <field name="x_school"/>
+                        <field name="x_sendungsnummer_ausbildungsvertrag_aag"/>
+                        <field name="x_Typus"/>
+                        <field name="x_Unterstuetzungsdocument"/>
+                        <field name="x_warten_auf_Bewerbungen"/>
+                        <field name="x_zweite_zahlung"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo> -->
+
+<odoo>
+    <data>
+        <record id="view_crm_lead_form_google_drive" model="ir.ui.view">
+            <field name="name">crm.lead.form.google.drive</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="action_save_student_pdfs"
+                            string="Save Student PDFs from Google Drive"
+                            type="object"
+                            class="oe_highlight"/>
+                </xpath>
+
+                <header position="inside">
+
+                    <button name="action_save_student_pdfs" string="Smart Button"
+                            type="object" class="oe_highlight" title="Smart Button"/>
+                </header>
+            </field>
+        </record>
+
+
+        <record id="view_crm_lead_form_custom_fields" model="ir.ui.view">
+            <field name="name">crm.lead.form.custom.fields</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="inside">
+                    <group>                       
+<field name="x_agent"/>
+                        <field name="x_complete_pdf"/>
+                        <field name="x_email_gmail"/>
+                        <field name="x_employer"/>
+                        <field name="x_employer_missing_documents"/>
+                        <field name="x_firstpayment"/>
+                        <field name="x_gdrive_pdf"/>
+                        <field name="x_gdrivepath" widget="url"/>
+                        <field name="x_gptdata"/>
+                        <field name="x_hwkihk_contract"/>
+                        <field name="x_identity"/>
+                        <field name="x_identity_photo"/>
+                        <field name="x_image"/>
+                        <field name="x_interview_date"/>
+                        <field name="x_invoice_created"/>
+                        <field name="x_language_certificate"/>
+                        <field name="x_language_level_german"/>
+                        <field name="x_missing_ds"/>
+                        <field name="x_motivation_text"/>
+                        <field name="x_next_field"/>
+                        <field name="x_our_provision"/>
+                        <field name="x_school"/>
+                        <field name="x_second_payment"/>
+                        <field name="x_stud_birth_city"/>
+                        <field name="x_stud_gender"/>
+                        <field name="x_stud_house_number"/>
+                        <field name="x_stud_prename"/>
+                        <field name="x_stud_surname"/>
+                        <field name="x_supportneeded_document"/>
+                        <field name="x_textextract"/>
+                        <field name="x_trackingnumber_contract"/>
+                        <field name="x_waiting_on_applications"/>                    </group>
+                </xpath>
+            </field>
+        </record>
+
+
+         <!-- Define a new tree view for displaying agent and student folders -->
+        <record id="view_crm_lead_student_folders_tree" model="ir.ui.view">
+            <field name="name">crm.lead.student.folder.tree</field>
+            <field name="model">crm.lead.student.folder</field>
+            <field name="arch" type="xml">
+                <tree string="Agent and Student Folders">
+                    <!-- Display the fields in the tree view -->
+                    <field name="name"/>
+                    <field name="application_pdf_id"/>
+                    <field name="contract_pdf_id"/>
+                    <field name="crm_lead_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Define an action for opening the tree view -->
+        <record id="action_crm_lead_student_folders" model="ir.actions.act_window">
+            <field name="name">Agent and Student Folders</field>
+            <field name="res_model">crm.lead.student.folder</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <!-- Define a menu item to access the tree view -->
+        <menuitem id="menu_crm_lead_student_folders" name="Agent and Student Folders" parent="crm.crm_menu_root"/>
+        <menuitem id="menu_crm_lead_student_folders_tree" name="Agent and Student Folders" parent="menu_crm_lead_student_folders" action="action_crm_lead_student_folders"/>
+   
+
+        <!-- Define a new form view for displaying the access token -->
+        <!-- <record id="view_google_drive_access_token_form" model="ir.ui.view">
+            <field name="name">google.drive.access.token.form</field>
+            <field name="model">ir.config_parameter</field>
+            <field name="arch" type="xml">
+                <form string="Google Drive Access Token">
+                   
+                    <sheet>
+                        <group>
+                            <field name="google_drive_access_token_field_name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record> -->
+
+    
+    </data>
+</odoo>
+

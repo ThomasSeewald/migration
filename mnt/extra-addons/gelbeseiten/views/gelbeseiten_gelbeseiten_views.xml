@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<odoo>
+	<!-- gelbeseiten.gelbeseiten Form View -->
+	<record id='devintellecs_view_gelbeseiten_gelbeseiten_form' model='ir.ui.view'>
+		<field name='name'>devintellecs.view.gelbeseiten.gelbeseiten.form</field>
+		<field name='model'>gelbeseiten.gelbeseiten</field>
+		<field name='priority'>16</field>
+		<field name='arch' type='xml'>
+			<form string='GelbeSeiten Menue'>
+				<sheet>
+					<group>
+						<field name='name'/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+
+	<!-- gelbeseiten.gelbeseiten Tree View -->
+	<record id='devintellecs_view_gelbeseiten_gelbeseiten_tree' model='ir.ui.view'>
+		<field name='name'>devintellecs.view.gelbeseiten.gelbeseiten.tree</field>
+		<field name='model'>gelbeseiten.gelbeseiten</field>
+		<field name='priority'>16</field>
+		<field name='arch' type='xml'>
+			<tree string='GelbeSeiten Menue'>
+				<field name='name'/>
+			</tree>
+		</field>
+	</record>
+
+
+	<!-- gelbeseiten.gelbeseiten Action -->
+	<record id='devintellecs_action_gelbeseiten_gelbeseiten' model='ir.actions.act_window'>
+		<field name='name'>gelbeseiten.gelbeseiten</field>
+		<field name='type'>ir.actions.act_window</field>
+		<field name='res_model'>gelbeseiten.gelbeseiten</field>
+		<field name='view_mode'>tree,form</field>
+	</record>
+
+	<!-- gelbeseiten.gelbeseiten Menu -->
+	<menuitem name="GelbeSeiten Menue" id="menu_gelbeseiten_gelbeseiten" parent="sub_gelbeseiten_menu" action="devintellecs_action_gelbeseiten_gelbeseiten"/>
+
+
+
+</odoo>
